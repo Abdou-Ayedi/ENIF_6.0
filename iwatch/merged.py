@@ -11,8 +11,9 @@ import smart_bin_pipeline
 THING_ID = "org.Iotp2c/iwatch"
 MQTT_TOPIC = f"{THING_ID}/things/twin/commands/modify"
 SUBSCRIBE_TOPIC = f"{THING_ID}/things/twin/events/modified"
-
-MQTT_BROKER = "192.168.177.1"
+MQTT_BROKER = "host.docker.internal"  # Change if needed
+#MQTT_BROKER = "192.168.1.98"  # Change if needed
+#MQTT_BROKER = "192.168.177.1"
 MQTT_PORT = 1883
 USERNAME = "ditto"
 PASSWORD = "ditto"
@@ -207,7 +208,7 @@ def send_data_to_ditto(iwatch_data):
         "value": {
             "thingId": "org.Iotp2c:iwatch",
             "policyId": "org.Iotp2c:policy",
-            "definition": "http://192.168.177.1:8000/iwatch.tm.jsonld",
+            "definition": "http://192.168.1.98:8000/iwatch.tm.jsonld",
             "attributes": {
                 "bins": iwatch_data
             }    # 🔥 MULTI BIN HERE
